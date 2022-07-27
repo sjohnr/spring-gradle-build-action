@@ -20,12 +20,12 @@ runs:
       with:
         java-version: ${{ inputs.java-version }}
         distribution: ${{ inputs.distribution }}
-    - name: Gradle Wrapper Validation
-      uses: gradle/wrapper-validation-action@v1
-    - name: Set up Gradle
-      uses: gradle/gradle-build-action@v2
     - name: Set up gradle user name
       shell: bash
       run: |
         mkdir -p .gradle
-        echo 'systemProp.user.name=spring-builds+github' >> $GRADLE_USER_HOME/gradle.properties
+        echo 'systemProp.user.name=spring-builds+github' >> .gradle/gradle.properties
+    - name: Gradle Wrapper Validation
+      uses: gradle/wrapper-validation-action@v1
+    - name: Set up Gradle
+      uses: gradle/gradle-build-action@v2
